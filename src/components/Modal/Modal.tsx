@@ -9,8 +9,8 @@ interface Props extends React.PropsWithChildren {
 const Modal: React.FC<Props> = ({ show, title, onClose, children }) => {
   return (
     <>
-      <Backdrop show={show} />
-      <div className="modal show" style={{ display: show ? "block" : "none" }}>
+      <Backdrop onClose={onClose} show={show} />
+      <div className="modal show" style={{display: show ? 'block' : 'none', width: "500px", position: 'fixed', top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
