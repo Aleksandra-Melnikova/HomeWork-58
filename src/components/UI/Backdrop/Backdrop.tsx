@@ -5,7 +5,7 @@ interface Props {
   onClose: React.MouseEventHandler;
 }
 
-const Backdrop: React.FC<Props> = ({ show , onClose }) => {
+const Backdrop: React.FC<Props> = ({ show, onClose }) => {
   return (
     <div>
       <div
