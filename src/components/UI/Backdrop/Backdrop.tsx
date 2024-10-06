@@ -11,7 +11,7 @@ const Backdrop: React.FC<Props> = ({ show, onClose }) => {
       <div
         onClick={onClose}
         className="modal-backdrop "
-        style={{ display: show ? "block" : "none" }}
+        style={{ display: show ? "block" : "none", opacity: 0.7 }}
       />
     </div>
   );
