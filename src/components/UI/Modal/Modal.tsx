@@ -1,14 +1,23 @@
 import Backdrop from "../Backdrop/Backdrop.tsx";
 import * as React from "react";
 import { motion } from "framer-motion";
+import { IButtonModal } from "../../../types";
+import ButtonsModal from "./buttonsModal.tsx";
 
 interface Props extends React.PropsWithChildren {
   show: boolean;
   title: string;
+  buttonArray: IButtonModal[];
   onClose: () => void;
 }
 
-export const Modal: React.FC<Props> = ({ show, title, onClose, children }) => {
+export const Modal: React.FC<Props> = ({
+  show,
+  title,
+  onClose,
+  buttonArray,
+  children,
+}) => {
   return (
     <>
       <Backdrop onClose={onClose} show={show} />
@@ -22,7 +31,9 @@ export const Modal: React.FC<Props> = ({ show, title, onClose, children }) => {
         style={{
           display: show ? "block" : "none",
           width: "500px",
+          height: "auto",
           position: "fixed",
+          transform: "translate(-50%, -50%)",
           top: "50px",
           left: "600px",
         }}
@@ -38,6 +49,16 @@ export const Modal: React.FC<Props> = ({ show, title, onClose, children }) => {
               ></button>
             </div>
             <div className="p-3">{children}</div>
+            <div className="d-flex justify-content-center">
+              {buttonArray.map((button) => (
+                <ButtonsModal
+                  key={button.label}
+                  type={button.type}
+                  label={button.label}
+                  onClick={button.onClick}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>

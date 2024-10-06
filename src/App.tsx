@@ -12,12 +12,30 @@ const App = () => {
     setShowAlert((prevState) => !prevState);
     return showAlert;
   };
+
   return (
     <>
-      <Modal show={showModal} onClose={cansel} title="Some kinda modal title">
+      <Modal
+        buttonArray={[
+          {
+            type: "primary",
+            label: "Continue",
+            onClick: () => console.log("clicked continue"),
+          },
+          {
+            type: "danger",
+            label: "Close",
+            onClick: () => {
+              cansel();
+            },
+          },
+        ]}
+        show={showModal}
+        onClose={cansel}
+        title="Some kinda modal title"
+      >
         <p>This is modal content</p>
       </Modal>
-
       <button
         type="button"
         className="btn btn-primary d-block me-auto ms-auto mt-5 mb-5"
